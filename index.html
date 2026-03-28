@@ -577,7 +577,7 @@ footer{
   <div class="ticker-inner" id="ticker">
     <span class="ticker-item"><i class="fas fa-exclamation-triangle"></i>ALERT-001 | Brute Force Attempt Detected — Source: 185.220.101.45 — Severity: HIGH</span>
     <span class="ticker-item"><i class="fas fa-shield-alt"></i>ALERT-002 | Suspicious DNS Query — Domain: malware-c2.ru — Severity: CRITICAL</span>
-    <span class="ticker-item"><i class="fas fa-bug"></i>ALERT-003 | Phishing Email Intercepted — Target: finance@corp.internal — Status: BLOCKED</span>
+    <span class="ticker-item"><i class="fas fa-bug"></i>ALERT-003 | Phishing Email Intercepted — Target: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="afc9c6c1cec1cccaefccc0dddf81c6c1dbcaddc1cec3">[email&#160;protected]</a> — Status: BLOCKED</span>
     <span class="ticker-item"><i class="fas fa-network-wired"></i>ALERT-004 | Lateral Movement Detected — Technique: T1021 — MITRE ATT&CK Mapped</span>
     <span class="ticker-item"><i class="fas fa-lock"></i>ALERT-005 | Multiple Failed Logins — Event ID 4625 — Threshold Exceeded: 52 attempts</span>
     <span class="ticker-item"><i class="fas fa-radiation"></i>ALERT-006 | Malware C2 Beacon — Interval: 60s — Endpoint Isolated</span>
@@ -611,7 +611,7 @@ footer{
     <p class="hero-intro">SOC Analyst with hands-on experience in SIEM monitoring, log analysis, and threat detection using Splunk and ELK. Passionate about turning raw telemetry into actionable threat intelligence.</p>
     <div class="hero-btns">
       <a href="#projects" class="btn btn-primary"><i class="fas fa-terminal"></i> &nbsp; View Projects</a>
-      <a href="THARIK_SOC_RESUME.pdf" download="Mohamed_Tharik_SOC_Resume.pdf" class="btn btn-secondary"><i class="fas fa-download"></i> &nbsp; Download Resume</a>
+      <button onclick="downloadResume()" class="btn btn-secondary"><i class="fas fa-download"></i> &nbsp; Download Resume</button>
     </div>
   </div>
 </section>
@@ -940,9 +940,9 @@ footer{
   </div>
   <div class="contact-grid reveal">
     <div class="contact-info">
-      <a href="mailto:tharik747@gmail.com" class="contact-item">
+      <a href="/cdn-cgi/l/email-protection#65110d04170c0e525152250208040c094b060a08" class="contact-item">
         <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-        <div><div class="contact-label">Email</div><div class="contact-value">tharik747@gmail.com</div></div>
+        <div><div class="contact-label">Email</div><div class="contact-value"><span class="__cf_email__" data-cfemail="3c48545d4e55570b080b7c5b515d5550125f5351">[email&#160;protected]</span></div></div>
       </a>
       <a href="tel:+918675148661" class="contact-item">
         <div class="contact-icon"><i class="fas fa-phone"></i></div>
@@ -990,7 +990,7 @@ footer{
       &copy; 2024 <span>Mohamed Tharik</span> &nbsp;|&nbsp; SOC Analyst (Tier 1) &nbsp;|&nbsp; Built with <span>❤</span> & coffee
     </div>
     <div class="social-links">
-      <a href="mailto:tharik747@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+      <a href="/cdn-cgi/l/email-protection#8cf8e4edfee5e7bbb8bbccebe1ede5e0a2efe3e1" class="social-link"><i class="fas fa-envelope"></i></a>
       <a href="https://www.linkedin.com/in/tharik-cybersecurity/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
       <a href="https://github.com/Tharik76" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
       <a href="https://tryhackme.com/p/THARU" target="_blank" class="social-link"><i class="fas fa-skull-crossbones"></i></a>
@@ -998,7 +998,7 @@ footer{
   </footer>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ═══════════════════════════════════════════
 // MATRIX / GRID CANVAS
 // ═══════════════════════════════════════════
@@ -1105,16 +1105,35 @@ termObs.observe(termLog);
 // preload a few
 setTimeout(()=>{for(let i=0;i<5;i++)addLog();},300);
 
+
+// ═══════════════════════════════════════════
+// FORCE DOWNLOAD RESUME
+// ═══════════════════════════════════════════
+function downloadResume(){
+  fetch('THARIK_SOC_RESUME.pdf')
+    .then(res => res.blob())
+    .then(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Mohamed_Tharik_SOC_Resume.pdf';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    })
+    .catch(() => window.open('THARIK_SOC_RESUME.pdf', '_blank'));
+}
+
 // ═══════════════════════════════════════════
 // CONTACT FORM
 // ═══════════════════════════════════════════
 document.querySelector('.form-submit').addEventListener('click',function(){
-  this.textContent='✓ MESSAGE TRANSMITTED';
+  this.innerHTML='<i class="fas fa-check"></i> &nbsp; MESSAGE TRANSMITTED';
   this.style.background='var(--neon-green)';
   this.style.color='#000';
   setTimeout(()=>{
     this.innerHTML='<i class="fas fa-paper-plane"></i> &nbsp; TRANSMIT MESSAGE';
-    this.style.background='var(--neon-green)';
   },2500);
 });
 </script>
