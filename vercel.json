@@ -1,0 +1,22 @@
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index (2).html" }
+  ]
+}
+```
+
+**Step 5** — Click **"Commit changes"**
+
+Vercel will **auto-redeploy in ~30 seconds** and your site will load correctly.
+
+---
+
+**Why this happens:** Vercel is built for React/Next.js apps by default. When you deploy a plain HTML file, it can't find the entry point unless you tell it where to look via `vercel.json`.
+
+---
+
+**Also double-check your repo has exactly these 3 files:**
+```
+index.html
+THARIK_SOC_RESUME.pdf
+vercel.json
